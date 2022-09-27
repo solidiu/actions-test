@@ -18,9 +18,13 @@ jobs:
         run: |
           contents=$( cat output.txt )
           echo "$contents"
-          echo "::set-output name=saves_changed::$contents"
+          same=$( cat same.txt )
+          changed=[ "$same" = "1" ]
+          echo "::set-output name=saves_changed::$changed"
+          echo "$changed"
+          echo "${{ steps.reading_save_file.outputs.saves_changed }}"
       - name: Commit save data
-        if: ${{ '1' == '1' }}
+        if: steps.reading_save_file.outputs.saves_changed
         run: |
           echo "Hello"
           echo "${{ steps.reading_save_file.outputs.saves_changed }}"
