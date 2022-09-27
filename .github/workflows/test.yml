@@ -6,17 +6,21 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    outputs:
+      saves_changed: ${{ steps.reading_save_file.outputs.saves_changed }}
     steps:
       - name: Actions checkout
         uses: actions/checkout@v2
       - name: API caching
         uses: ./
-      - name: Print save file
+      - name: Read and print save file
+        id: reading_save_file
         run: |
           contents=$( cat output.txt )
           echo "$contents"
+          echo "::set-output name=saves_changed::$contents"
       - name: Commit save data
         if: ${{ '1' == '1' }}
         run: |
           echo "Hello"
-          echo "$contents"
+          echo "${{ steps.reading_save_file.outputs.saves_changed }}"
