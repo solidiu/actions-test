@@ -1,8 +1,8 @@
 const fs = require('fs');
 
-const content = Date.now();
+const content = {date: Date.now()};
 
-fs.writeFile('./api_cache.json', content, err => {
+fs.writeFile('./api_cache.json', JSON.stringify(content), err => {
   if (err) {
     console.error(err);
   } else {
