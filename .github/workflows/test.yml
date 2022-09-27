@@ -18,7 +18,7 @@ jobs:
         run: |
           contents=$( cat output.txt )
           echo "$contents"
-          changed=$( cat same.txt )
+          changed=$( cat changed.txt )
           echo "::set-output name=saves_changed::$changed"
           echo "$changed"
           echo "${{ steps.reading_save_file.outputs.saves_changed }}"
