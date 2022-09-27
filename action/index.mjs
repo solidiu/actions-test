@@ -6,6 +6,8 @@ async function run() {
 		'https://raw.githubusercontent.com/solidiu/actions-test/main/api_cache.json';
 	const raw_data = await fetch(url);
 	const data = await raw_data.json();
+	
+	data.date = Date.now();
 
 	const content = JSON.stringify(data);
 
