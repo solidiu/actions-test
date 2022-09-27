@@ -9,7 +9,7 @@ async function run() {
 	
 	data.date = Date.now();
 
-	const content = JSON.stringify(data);
+	const content = JSON.stringify(data, null, 4);
 
 	fs.writeFile('./api_cache.json', content, (err) => {
 		if (err) {
