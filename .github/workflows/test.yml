@@ -21,4 +21,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
-          message: 'Overwritten by Github Actions - ${date}'
+          message: 'API cache updated with Github Actions'
