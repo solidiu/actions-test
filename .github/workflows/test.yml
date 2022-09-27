@@ -6,19 +6,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    outputs:
-      save_contents: ${{ steps.reading_save_file.outputs.contents }}
-      saves_changed: ${{ steps.reading_save_file.outputs.saves_changed }}
     steps:
       - name: Actions checkout
         uses: actions/checkout@v3
       - name: API caching
         uses: ./
-      - name: Read save files and save them to variables
-        id: reading_save_file
-        run: |
-          changed=$( cat changed.txt )
-          echo "::set-output name=saves_changed::$changed"
       - name: Remove temporary file
         run: |
           rm changed.txt
