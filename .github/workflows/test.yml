@@ -7,6 +7,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     outputs:
+      save_contents: ${{ steps.reading_save_file.outputs.contents }}
       saves_changed: ${{ steps.reading_save_file.outputs.saves_changed }}
     steps:
       - name: Actions checkout
@@ -17,13 +18,12 @@ jobs:
         id: reading_save_file
         run: |
           contents=$( cat output.txt )
-          echo "$contents"
           changed=$( cat changed.txt )
           echo "::set-output name=saves_changed::$changed"
-          echo "$changed"
-          echo "${{ steps.reading_save_file.outputs.saves_changed }}"
+          echo "::set-output name=save_contents::$contents"
       - name: Commit save data
         if: ${{ steps.reading_save_file.outputs.saves_changed == 'true' }}
         run: |
           echo "Hello"
           echo "${{ steps.reading_save_file.outputs.saves_changed }}"
+          echo "${{ steps.reading_save_file.outputs.contents }}"
