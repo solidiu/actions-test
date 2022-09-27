@@ -10,12 +10,12 @@ fs.writeFile('./output.txt', content, err => {
   }
 });
 
-const same = "1";
+const changed = "true";
 
-fs.writeFile('./same.txt', same, err => {
+fs.writeFile('./changed.txt', changed, err => {
   if (err) {
     console.error(err);
   } else {
-    console.log("Successfully wrote " + same + " to the 'same' file.");
+    console.log("Successfully wrote " + changed + " to the 'changed' file.");
   }
 });
