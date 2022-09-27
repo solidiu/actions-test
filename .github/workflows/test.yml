@@ -22,6 +22,8 @@ jobs:
       - name: Remove temporary file
         run: |
           rm changed.txt
+      - name: Pull data
+        run: git pull
       - name: Commit & Push
         uses: Andro999b/push@v1.3
         with:
