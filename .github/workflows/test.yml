@@ -19,6 +19,8 @@ jobs:
           path: ~/.npm
           key: npm-${{ hashFiles('package-lock.json') }}
           restore-keys: npm-
+      - name: Install dependencies
+        run: npm install
       - name: API caching
         uses: ./
       - name: Pull data
