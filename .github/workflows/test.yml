@@ -9,6 +9,16 @@ jobs:
     steps:
       - name: Actions checkout
         uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
       - name: API caching
         uses: ./
       - name: Pull data
