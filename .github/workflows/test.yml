@@ -23,7 +23,7 @@ jobs:
           echo "$changed"
           echo "${{ steps.reading_save_file.outputs.saves_changed }}"
       - name: Commit save data
-        if: ${{ steps.reading_save_file.outputs.saves_changed == "true" }
+        if: ${{ steps.reading_save_file.outputs.saves_changed == "true" }}
         run: |
           echo "Hello"
           echo "${{ steps.reading_save_file.outputs.saves_changed }}"
