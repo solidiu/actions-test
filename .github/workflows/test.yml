@@ -14,13 +14,16 @@ jobs:
         uses: actions/checkout@v3
       - name: API caching
         uses: ./
-      - name: Read and print save file
+      - name: Read save files and save them to variables
         id: reading_save_file
         run: |
           contents=$( cat output.txt )
           changed=$( cat changed.txt )
           echo "::set-output name=saves_changed::$changed"
           echo "::set-output name=save_contents::$contents"
+      - name: Remove temporary files
+        run: |
+          rm output.txt changed.txt
       - name: Overwrite file
         if: ${{ steps.reading_save_file.outputs.saves_changed == 'true' }}
         uses: "DamianReeves/write-file-action@master"
