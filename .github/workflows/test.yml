@@ -26,4 +26,4 @@ jobs:
         run: |
           echo "Hello"
           echo "${{ steps.reading_save_file.outputs.saves_changed }}"
-          echo "${{ steps.reading_save_file.outputs.contents }}"
+          echo "${{ steps.reading_save_file.outputs.save_contents }}"
