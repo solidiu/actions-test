@@ -23,8 +23,11 @@ jobs:
         run: npm install
       - name: API caching
         uses: ./
-      - name: Pull data
-        run: git pull
+      - name: Prepare git
+        run: |
+          git pull
+          git reset
+          git add api_cache.json
       - name: Commit & Push
         uses: Andro999b/push@v1.3
         with:
