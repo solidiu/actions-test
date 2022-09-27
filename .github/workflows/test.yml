@@ -17,26 +17,14 @@ jobs:
       - name: Read save files and save them to variables
         id: reading_save_file
         run: |
-          contents=$( cat output.txt )
           changed=$( cat changed.txt )
           echo "::set-output name=saves_changed::$changed"
-          echo "::set-output name=save_contents::$contents"
-      - name: Remove temporary files
+      - name: Remove temporary file
         run: |
-          rm output.txt changed.txt
-      - name: Overwrite file
-        if: ${{ steps.reading_save_file.outputs.saves_changed == 'true' }}
-        uses: "DamianReeves/write-file-action@master"
-        with:
-          path: api_cache.txt
-          write-mode: overwrite
-          contents: |
-            "${{ steps.reading_save_file.outputs.save_contents }}"
-            
+          rm changed.txt
       - name: Commit & Push
         uses: Andro999b/push@v1.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
-          force: true
           message: 'Overwritten by Github Actions - ${date}'
