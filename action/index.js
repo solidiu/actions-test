@@ -6,14 +6,16 @@ fs.writeFile('./output.txt', content, err => {
   if (err) {
     console.error(err);
   } else {
-    console.log("Successfully wrote " + content + " to the file.");
+    console.log("Successfully wrote " + content + " to the output file.");
   }
 });
 
-fs.writeFile('./same.txt', "1", err => {
+const same = "1";
+
+fs.writeFile('./same.txt', same, err => {
   if (err) {
     console.error(err);
   } else {
-    console.log("Successfully wrote " + content + " to the file.");
+    console.log("Successfully wrote " + same + " to the 'same' file.");
   }
 });
