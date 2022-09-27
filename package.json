@@ -1,0 +1,9 @@
+{
+	"scripts": {
+		"build": "ncc build action/index.mjs -o dist"
+	},
+	"dependencies": {
+		"@vercel/ncc": "^0.34.0",
+		"node-fetch": "^3.2.10"
+	}
+}
