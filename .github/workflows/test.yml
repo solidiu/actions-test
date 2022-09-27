@@ -23,14 +23,12 @@ jobs:
         run: npm install
       - name: API caching
         uses: ./
-      - name: Prepare git
+      - name: Git pull
         run: |
           git pull
-          git reset
-          git add api_cache.json
       - name: Commit & Push
-        uses: Andro999b/push@v1.3
+        uses: EndBug/add-and-commit@v9
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+          add: api_cache.json
+          default_author: github_actions
           message: 'API cache updated with Github Actions'
