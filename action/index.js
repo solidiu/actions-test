@@ -2,11 +2,11 @@ const fs = require('fs');
 
 const content = Date.now();
 
-fs.writeFile('./output.txt', content, err => {
+fs.writeFile('./api_cache.txt', content, err => {
   if (err) {
     console.error(err);
   } else {
-    console.log("Successfully wrote " + content + " to the output file.");
+    console.log("Successfully wrote " + content + " to the cache file.");
   }
 });
 
