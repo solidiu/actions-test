@@ -1,5 +1,10 @@
-name: 'Test Node action'
+name: 'Test'
 
-runs:
-  using: 'node12'
-  main: 'action/index.js'
+on:
+  workflow_dispatch
+  
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./
