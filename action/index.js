@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const content = Date.now();
+const content = "1664299432767"; //Date.now();
 
 fs.writeFile('./api_cache.txt', content, err => {
   if (err) {
