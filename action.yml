@@ -1,0 +1,5 @@
+name: 'Test Node action'
+
+runs:
+  using: 'node12'
+  main: 'action/index.js'
